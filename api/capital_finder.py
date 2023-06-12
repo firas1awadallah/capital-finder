@@ -7,7 +7,7 @@ class handler(BaseHTTPRequestHandler):
     self.send_response(200)
     self.send_header('Content-type', 'text/plain')
     self.end_headers()
-    # list_of_dif=[]
+    list_of_dif=[]
     message="testing"
     url_path = self.path
     url_components = parse.urlsplit(url_path)
@@ -15,17 +15,19 @@ class handler(BaseHTTPRequestHandler):
     my_dict = dict(query_list)
 
     # print(111,my_dict)
-    if 'country' in my_dict:
-      country = my_dict.get('country')
-      url= 'https://restcountries.com/v3.1/name'
-      res = requests.get(url+country)
+    if 'word' in my_dict:
+      word = my_dict.get('word')
+      url= 'https://api.dictionaryapi.dev/api/v2/entries/en/'
+      res = requests.get(url+word)
       data = res.json()
     #   print(222,data)
-    for country_data in data :
-      Country = country_data['capital']
-      # message = str(Country)
-    #   list_of_dif.append(message)
-    # print(2222,list_of_dif)
+    for word_data in data :
+      definition = word_data['meanings'][0]['definitions'][0]['definition']
+      message = str(definition)
+      list_of_dif.append(message)
+    print(2222,list_of_dif)
+
+
 
 
     self.wfile.write(message.encode())
