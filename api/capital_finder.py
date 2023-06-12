@@ -22,7 +22,7 @@ class handler(BaseHTTPRequestHandler):
       data = res.json()
     #   print(222,data)
     for country_data in data :
-      Country = country_data['name']
+      Country = country_data['name']['common']
       message = str(Country)
     #   list_of_dif.append(message)
     # print(2222,list_of_dif)
