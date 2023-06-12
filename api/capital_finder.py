@@ -22,7 +22,7 @@ class handler(BaseHTTPRequestHandler):
       data = res.json()
     #   print(222,data)
     for word_data in data :
-      definition = word_data['name']['official']
+      definition = word_data['capital']
       message = str(definition)
     #   list_of_dif.append(message)
     # print(2222,list_of_dif)
