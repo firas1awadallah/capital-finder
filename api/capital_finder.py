@@ -17,7 +17,7 @@ class handler(BaseHTTPRequestHandler):
     # print(111,my_dict)
     if 'country' in my_dict:
       country = my_dict.get('country')
-      url= 'https://restcountries.com/v3.1/name/jordan'
+      url= 'https://restcountries.com/v3.1/name'
       res = requests.get(url+country)
       data = res.json()
     #   print(222,data)
