@@ -23,7 +23,7 @@ class handler(BaseHTTPRequestHandler):
     #   print(222,data)
     for word_data in data :
       definition = word_data['capital']
-      message = f"The capital of {word} is {str(definition)}"
+      message = f"The capital of {word} is {definition}"
     #   list_of_dif.append(message)
     # print(2222,list_of_dif)
 
