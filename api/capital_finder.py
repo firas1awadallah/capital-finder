@@ -8,7 +8,7 @@ class handler(BaseHTTPRequestHandler):
     self.send_header('Content-type', 'text/plain')
     self.end_headers()
     # list_of_dif=[]
-    # message="testing"
+    message="testing"
     url_path = self.path
     url_components = parse.urlsplit(url_path)
     query_list = parse.parse_qsl(url_components.query)
@@ -23,7 +23,7 @@ class handler(BaseHTTPRequestHandler):
     #   print(222,data)
     for country_data in data :
       Country = country_data['capital']
-      message = str(Country)
+      # message = str(Country)
     #   list_of_dif.append(message)
     # print(2222,list_of_dif)
 
