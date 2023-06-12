@@ -17,12 +17,12 @@ class handler(BaseHTTPRequestHandler):
     # print(111,my_dict)
     if 'word' in my_dict:
       word = my_dict.get('word')
-      url= 'https://api.dictionaryapi.dev/api/v2/entries/en/'
+      url= 'https://restcountries.com/v3.1/name/'
       res = requests.get(url+word)
       data = res.json()
     #   print(222,data)
     for word_data in data :
-      definition = word_data['meanings'][0]['definitions'][0]['definition']
+      definition = word_data[0]['name']['official']
       message = str(definition)
     #   list_of_dif.append(message)
     # print(2222,list_of_dif)
