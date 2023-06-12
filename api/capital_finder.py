@@ -27,7 +27,7 @@ class handler(BaseHTTPRequestHandler):
       url= 'https://restcountries.com/v3.1/capital/'
       data = res.json()
       for word_data in data :
-        definition = word_data['name']['common']
+        definition = word_data[0]['name']['common']
         message = f"{word} The Capital of {definition}"
 
 
