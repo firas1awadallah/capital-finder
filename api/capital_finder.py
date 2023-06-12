@@ -25,9 +25,10 @@ class handler(BaseHTTPRequestHandler):
     elif 'capital' in my_dict:
       word = my_dict.get('capital')
       url= 'https://restcountries.com/v3.1/capital/'
+      res = requests.get(url+word)
       data = res.json()
       for word_data in data :
-        definition = word_data[0]['name']['common']
+        definition = word_data['name']['common']
         message = f"{word} The Capital of {definition}"
 
 
