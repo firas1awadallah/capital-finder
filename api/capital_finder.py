@@ -8,7 +8,7 @@ class handler(BaseHTTPRequestHandler):
     self.send_header('Content-type', 'text/plain')
     self.end_headers()
     # list_of_dif=[]
-    message="testing"
+    # message="testing"
     url_path = self.path
     url_components = parse.urlsplit(url_path)
     query_list = parse.parse_qsl(url_components.query)
@@ -17,13 +17,13 @@ class handler(BaseHTTPRequestHandler):
     # print(111,my_dict)
     if 'country' in my_dict:
       country = my_dict.get('country')
-      url= 'https://restcountries.com/v3.1/name/jordan'
-      res = requests.get(url)
+      url= 'https://restcountries.com/v3.1/name'
+      res = requests.get(url+country)
       data = res.json()
     #   print(222,data)
     for country_data in data :
-      Country = country_data['name']['common']
-      # message = str(Country)
+      Country = country_data[0]['name']['common']
+      message = str(Country)
     #   list_of_dif.append(message)
     # print(2222,list_of_dif)
 
