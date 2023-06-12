@@ -7,25 +7,26 @@ class handler(BaseHTTPRequestHandler):
     self.send_response(200)
     self.send_header('Content-type', 'text/plain')
     self.end_headers()
-    # list_of_dif=[]
-    # message="testing"
+   
     url_path = self.path
     url_components = parse.urlsplit(url_path)
     query_list = parse.parse_qsl(url_components.query)
     my_dict = dict(query_list)
 
-    # print(111,my_dict)
-    if 'word' in my_dict:
+    if 'country' in my_dict:
+      word = my_dict.get('country')
+      url= 'https://restcountries.com/v3.1/name/'
+      res = requests.get(url+word)
+      data = res.json()
+    elif 'word' in my_dict:
       word = my_dict.get('word')
       url= 'https://restcountries.com/v3.1/name/'
       res = requests.get(url+word)
       data = res.json()
-    #   print(222,data)
     for word_data in data :
       definition = word_data['capital'][0]
       message = f"The capital of {word} is {definition}"
-    #   list_of_dif.append(message)
-    # print(2222,list_of_dif)
+
 
     self.wfile.write(message.encode())
     return
