@@ -17,7 +17,7 @@ class handler(BaseHTTPRequestHandler):
     # print(111,my_dict)
     if 'capital' in my_dict:
       capital = my_dict.get('capital')
-      url= 'https://restcountries.com/v3.1/capital/{capital}'
+      url= 'https://restcountries.com/v3.1/capital/amman'
       res = requests.get(url+capital)
       data = res.json()
     #   print(222,data)
